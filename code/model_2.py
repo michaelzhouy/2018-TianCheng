@@ -663,7 +663,8 @@ def lgb_model(tag_data, operation_data, transaction_data):
                                     (X_test, y_test)],
                           eval_names=["train", "valid"],
                           early_stopping_rounds=100,
-                          verbose=True)
+                          verbose=True,
+                          verbose_eval=100)
 
             vali_pred = gbm.predict_proba(X_test, num_iteration=gbm.best_iteration_)[:, 1]
             vali_k_score = tpr_weight_funtion(y_test, vali_pred)
@@ -708,7 +709,7 @@ def Processing():
     tag_data = get_data(name='tag')
     operation_data = pd.merge(operation_data, tag_data, on='UID', how='left')
     transaction_data = pd.merge(transaction_data, tag_data, on='UID', how='left')
-    op_delete=['ip2', 'ip2_sub' ]
+    op_delete=['ip2', 'ip2_sub']
     trans_delete = ['code1', 'code2']
     operation_data = operation_data.drop(op_delete, axis=1)
     transaction_data = transaction_data.drop(trans_delete, axis=1)

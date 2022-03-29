@@ -663,8 +663,7 @@ def lgb_model(tag_data, operation_data, transaction_data):
                                     (X_test, y_test)],
                           eval_names=["train", "valid"],
                           early_stopping_rounds=100,
-                          verbose=True,
-                          verbose_eval=100)
+                          verbose=100)
 
             vali_pred = gbm.predict_proba(X_test, num_iteration=gbm.best_iteration_)[:, 1]
             vali_k_score = tpr_weight_funtion(y_test, vali_pred)

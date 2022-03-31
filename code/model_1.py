@@ -69,7 +69,7 @@ print(tr_data.shape)
 # In[5]:
 
 
-tag['Tag'].value_counts().plot.pie(autopct = '%1.2f%%')
+tag['Tag'].value_counts().plot.pie(autopct='%1.2f%%')
 
 
 # # Operation
@@ -1154,5 +1154,5 @@ y_pred = gbm.predict(X_test)
 
 sub = pd.read_csv('../../01-data/提交样例.csv')
 sub['Tag'] = y_pred
-sub.to_csv('./model_1.csv',index=False)
+sub.to_csv('./model_1.csv', index=False)
 
